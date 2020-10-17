@@ -106,6 +106,7 @@ import { RegisterComponent } from './register/register.component';
     PortalModule,
     ScrollingModule,
     FormsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
