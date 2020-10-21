@@ -5,27 +5,11 @@ export interface User {
     email: string;
 }
 
-export interface UserReg {
- id?: number;
- name: string;
- password: string;
- email: string;
-}
-
 export interface LoginDto {
    email: string;
    password: string;
+   name: string;
 }
-
-
-export interface RegisterDto {
-    email: string;
-    password: string;
-    name: string;
-}
-
-export const USERSreg: UserReg[] = []
-
 
 export const USERS: User[] = [
     {

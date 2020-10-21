@@ -1,5 +1,11 @@
 <div class="container">
-<mat-card>
+<h1> {{ getTitle }}</h1>
+    <mat-card>
+<mat-form-field appearance="fill" *ngIf="isRegister">
+    <mat-label>Name</mat-label>
+     <input matInput 
+     [(ngModel)]="loginData.name">
+    </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
 <input matInput 
@@ -13,5 +19,6 @@
 </mat-form-field>
 <br>
 <button mat-button color="primary" (click)="onLogin()">Login</button>
+<button mat-button color="primary" (click)="register()"> {{ getRegisterLabel }}</button>
 </mat-card>
 </div>

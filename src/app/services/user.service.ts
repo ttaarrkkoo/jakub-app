@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { LoginDto, User, USERS, USERSreg, RegisterDto, UserReg } from '../types';
+import { LoginDto, User, USERS, } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +10,31 @@ export class UserService {
   constructor() { }
 
   usersDb = USERS;
-
+  loggedUser: User;
 
   login(loginData: LoginDto): Observable<User> {
 
     const user = this.usersDb.find(x => x.email === loginData.email &&
       x.password === loginData.password)
-    if (user) {
+    this.loggedUser = user;
+       
 
-      return of(user);
-    }
+    return of(user)
   }
-  regusersDb = USERSreg;
 
-  register(regData: RegisterDto): void {
+ // regusersDb = USERSreg;
 
-    this.regusersDb.push({ email: regData.email, password: regData.password, name: regData.name })
-  }
+  register(loginData: LoginDto): void {
+
+//    this.regusersDb.push({ email: regData.email, password: regData.password, name: regData.name })
+this.usersDb.push({
+...loginData,
+  id: Math.random() * 10 + 5,
+})
+
 }
+
+
+}
+
+

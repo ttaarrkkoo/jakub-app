@@ -49,13 +49,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
