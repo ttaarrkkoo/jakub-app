@@ -5,6 +5,13 @@ export interface User {
     email: string;
 }
 
+export interface Movie {
+title: string;
+year: string;
+released: string;
+plot: string;
+}
+
 export interface LoginDto {
    email: string;
    password: string;

@@ -50,6 +50,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MovieComponent } from './movie/movie.component';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +110,7 @@ import { HomeComponent } from './home/home.component';
     PortalModule,
     ScrollingModule,
     FormsModule,
-  
+    HttpClientModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
