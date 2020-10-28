@@ -6,10 +6,11 @@ export interface User {
 }
 
 export interface Movie {
-title: string;
-year: string;
-released: string;
-plot: string;
+Title: string;
+Year: string;
+Type: string;
+Poster: string;
+imdbID: string;
 }
 
 export interface LoginDto {

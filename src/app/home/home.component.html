@@ -18,18 +18,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <div class="search">
-        <mat-form-field appearance="fill">
-          <mat-label>Search for a movie</mat-label>
-          <input matInput placeholder="Search for a movie" [(ngModel)]="search">
-          <button mat-icon-button (click)="getMovie()"><mat-icon>search</mat-icon></button>
-        </mat-form-field>
-      </div>
-
-      <div *ngIf="movies" class="movies">
-        <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
-      </div>
-
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

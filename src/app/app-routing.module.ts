@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 // { path: '', redirectTo: '/register', pathMatch: 'full' }, ,
@@ -9,13 +11,21 @@ const routes: Routes = [
 component: LoginComponent },
 
 { path: 'home',
-component: HomeComponent },
+component: HomeComponent,
+children: [
+  {
+  path: '',
+  component: SearchComponent
+  }
+,
+  {path: 'details/:id',
+component: DetailsComponent}
+] },
 
 { path: '',
 redirectTo: 'home',
 pathMatch: 'full'}
-];
-
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

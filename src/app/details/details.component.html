@@ -1,0 +1,13 @@
+<mat-card *ngIf="movie" class="detail">
+    <mat-card-header>
+       <mat-card-title>{{movie.Title}}</mat-card-title>
+    </mat-card-header>
+    <h2>Year: {{movie.Year}}</h2>
+    <h2>Rated: {{movie.Rated}}</h2>
+    <h2>Released: {{movie.Released}}</h2>
+    <h2>Runtime: {{movie.Runtime}}</h2>
+    <h2>Genre: {{movie.Genre}}</h2>
+    <h2>Director: {{movie.Director}}</h2>
+    <h2>Writer: {{movie.Writer}}</h2>
+    <h2>imdbRating: {{movie.imdbRating}}</h2>
+</mat-card>

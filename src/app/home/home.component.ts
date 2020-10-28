@@ -1,19 +1,3 @@
-/*import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
-})
-export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
-*/
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import { MovieService } from '../services/movie.service';
@@ -29,9 +13,8 @@ import { Movie, User } from '../types';
 export class HomeComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
  user: User;
-  title = 'Movies';
-  search: '';
- movies: Movie[];
+ title = 'Movies';
+
 
   private _mobileQueryListener: () => void;
 
@@ -43,11 +26,6 @@ export class HomeComponent implements OnDestroy {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
-getMovie(): void {
-  this.movieService.searchMovie(this.search)
-  .subscribe(x => this.movies = x.Search.slice(0.10))
-}
 
 ngOnInit(): void {
   this.user = this.userService.loggedUser;

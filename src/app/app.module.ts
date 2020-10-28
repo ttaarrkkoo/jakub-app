@@ -52,6 +52,9 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
+import { WeatherComponent } from './weather/weather.component';
+import { SearchComponent } from './search/search.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -60,6 +63,9 @@ import { MovieComponent } from './movie/movie.component';
     LoginComponent,
     HomeComponent,
     MovieComponent,
+    WeatherComponent,
+    SearchComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

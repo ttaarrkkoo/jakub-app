@@ -3,6 +3,6 @@
         <mat-card-title>{{movie.Title}}</mat-card-title>
    </mat-card-header>
    <div>
-   <img [src]="movie.Poster">
+   <img (click)="selectMovie()" [src]="movie.Poster">
    </div>
 </mat-card>
