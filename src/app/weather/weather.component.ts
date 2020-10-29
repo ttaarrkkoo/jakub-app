@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
+  loc: string = ''
+  currentWeather: any;
+  
 
-  constructor() { }
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
+  
+  searchWeather(loc: string) {
+    this.loc = '';
+    this.currentWeather = {};
+    this.weatherService.getWeather()
+      .subscribe(res => {
+        this.currentWeather = res;
 
+      })
+  }
 }
+

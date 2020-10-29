@@ -4,6 +4,7 @@ import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
+import { WeatherComponent } from './weather/weather.component';
 
 const routes: Routes = [
 // { path: '', redirectTo: '/register', pathMatch: 'full' }, ,
@@ -20,11 +21,17 @@ children: [
 ,
   {path: 'details/:id',
 component: DetailsComponent}
+
+,
+{path: 'weather',
+component: WeatherComponent}
+
 ] },
 
 { path: '',
 redirectTo: 'home',
-pathMatch: 'full'}
+pathMatch: 'full'},
+
 ]
 
 @NgModule({
