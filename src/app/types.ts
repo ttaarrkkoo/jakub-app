@@ -3,6 +3,11 @@ export interface User {
     name: string;
     password: string;
     email: string;
+    role?: Role;
+}
+export enum Role {
+Admin = 'Adminstrator',
+User = 'User'
 }
 
 export interface Movie {
@@ -24,7 +29,8 @@ export const USERS: User[] = [
         id: 1,
         name: 'Dzoni',
         password: 'dzoni',
-        email: 'dzoni@gmail.com'
+        email: 'dzoni@gmail.com',
+        role: Role.Admin
     },
 
     {

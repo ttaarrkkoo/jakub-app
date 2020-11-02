@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginDto } from '../types';
 import { UserService } from '../services/user.service'
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 
 export class LoginComponent implements OnInit {
-
+@Input() isAdmin = false;
 
 loginData = {name: '', email: '', password: ''} as LoginDto;
  isRegister = false;
@@ -35,7 +35,7 @@ this.userService.login(this.loginData).subscribe(user => {
 }
 
 register(): void {
-if (this.isRegister) {
+if (this.isRegister || this.isAdmin) {
   this.userService.register(this.loginData);
   this.isRegister = false;
 } else {
@@ -44,17 +44,18 @@ if (this.isRegister) {
 }
 
 get getTitle(): string {
-  if (this.isRegister) {
+  if (this.isRegister || this.isAdmin) {
   return 'Register Form';
   }
   return 'Login Form';
 }
 
 get getRegisterLabel(): string {
-  if (this.isRegister) {
+  if (this.isRegister || this.isAdmin) {
     return 'Register';
   }
   else return 'Create account';
 }
+
 
 }

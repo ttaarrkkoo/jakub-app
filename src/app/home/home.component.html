@@ -7,6 +7,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">{{title}}</h1>
+    <button mat-icon-buton (click)="OnLogout()">Logout</button>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -15,6 +16,7 @@
       <mat-nav-list>
         <a mat-list-item routerLink=".">Home</a>
         <a mat-list-item routerLink="/home/weather">Weather</a>
+        <a *ngIf="isAdmin()" mat-list-item routerLink="/home/admin">Admin panel</a>
       </mat-nav-list>
     </mat-sidenav>
 

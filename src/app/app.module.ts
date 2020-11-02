@@ -55,6 +55,7 @@ import { MovieComponent } from './movie/movie.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsComponent } from './details/details.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { DetailsComponent } from './details/details.component';
     WeatherComponent,
     SearchComponent,
     DetailsComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

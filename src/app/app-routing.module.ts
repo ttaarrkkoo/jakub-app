@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -7,30 +8,44 @@ import { SearchComponent } from './search/search.component';
 import { WeatherComponent } from './weather/weather.component';
 
 const routes: Routes = [
-// { path: '', redirectTo: '/register', pathMatch: 'full' }, ,
-{ path: 'login', 
-component: LoginComponent },
-
-{ path: 'home',
-component: HomeComponent,
-children: [
+  // { path: '', redirectTo: '/register', pathMatch: 'full' }, ,
   {
-  path: '',
-  component: SearchComponent
-  }
-,
-  {path: 'details/:id',
-component: DetailsComponent}
+    path: 'login',
+    component: LoginComponent
+  },
 
-,
-{path: 'weather',
-component: WeatherComponent}
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: SearchComponent
+      }
+      ,
+      {
+        path: 'details/:id',
+        component: DetailsComponent
+      }
 
-] },
+      ,
+      {
+        path: 'weather',
+        component: WeatherComponent
+      }
+      ,
+      {
+        path: 'admin',
+        component: AdminComponent
+      }
+    ]
+  },
 
-{ path: '',
-redirectTo: 'home',
-pathMatch: 'full'},
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 
 ]
 

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { LoginDto, User, USERS, } from '../types';
+import { LoginDto, Role, User, USERS, } from '../types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   usersDb = USERS;
   loggedUser: User;
@@ -30,11 +31,12 @@ export class UserService {
 
   // regusersDb = USERSreg;
 
-  register(loginData: LoginDto): void {
+  register(loginData: LoginDto, isAdmin?: boolean): void {
 
     //    this.regusersDb.push({ email: regData.email, password: regData.password, name: regData.name })
     this.usersDb.push({
       ...loginData,
+      role: isAdmin ? Role.Admin : Role.User,
       id: Math.random() * 10 + 5,
     })
 
@@ -42,5 +44,11 @@ export class UserService {
 
   setLoggedUser(user: User): void {
     this.loggedUser = user;
+  }
+
+
+  logout(): void {
+    this.loggedUser = undefined;
+    localStorage.clear();
   }
 }

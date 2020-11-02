@@ -1,7 +1,7 @@
 <div class="container">
 <h1> {{ getTitle }}</h1>
     <mat-card>
-<mat-form-field appearance="fill" *ngIf="isRegister">
+<mat-form-field appearance="fill" *ngIf="isRegister || isAdmin">
     <mat-label>Name</mat-label>
      <input matInput 
      [(ngModel)]="loginData.name">
@@ -18,7 +18,7 @@
       [(ngModel)]="loginData.password">
 </mat-form-field>
 <br>
-<button mat-button color="primary" (click)="onLogin()">Login</button>
+<button mat-button color="primary" *ngIf="!isAdmin" (click)="onLogin()">Login</button>
 <button mat-button color="primary" (click)="register()"> {{ getRegisterLabel }}</button>
 </mat-card>
 </div>
