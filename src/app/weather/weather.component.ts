@@ -11,18 +11,17 @@ export class WeatherComponent implements OnInit {
   currentWeather: any;
   
 
-  constructor(public weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
   
-  searchWeather(loc: string) {
-    this.loc = '';
+  searchWeather() {
     this.currentWeather = {};
-    this.weatherService.getWeather()
+    this.weatherService.getWeather(this.loc)
       .subscribe(res => {
         this.currentWeather = res;
-
+      console.log(this.currentWeather)
       })
   }
 }

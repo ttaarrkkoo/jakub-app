@@ -1,10 +1,17 @@
-<p>weather works!</p>
 <div class="search">
-            <input type="text" id="grad" placeholder="Search city ...">
-            <button type="button" (click)="searchWeather()">Search</button>
+    <input mat-input type="text" placeholder="Search city ..." [(ngModel)]="loc">
+    <button type="button" (click)="searchWeather()">Search</button>
 </div>
 <div class="result">
- 
-<p id="temp"></p>
+    <mat-card *ngIf="currentWeather" class="detail">
+        <mat-card-header>
+            <mat-card-title>{{currentWeather.name}}</mat-card-title>
+        </mat-card-header>
+        <h2>Temperature: {{currentWeather.main.temp}}</h2>
+        <h2>Humidity: {{currentWeather.main.humidity}}</h2>
+        <h2>Pressure: {{currentWeather.main.pressure}}</h2>
+
+    </mat-card>
+
 
 </div>
