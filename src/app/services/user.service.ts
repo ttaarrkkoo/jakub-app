@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { LoginDto, Role, User, USERS, } from '../types';
+import { LoginDto, Pol, Role, User, USERS, } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,11 @@ export class UserService {
   usersDb = USERS;
   loggedUser: User;
 
-  login(loginData: LoginDto): Observable<User> {
+ login(loginData: LoginDto):  Observable<User> {
 
+    
     const user = this.usersDb.find(x => x.email === loginData.email &&
-      x.password === loginData.password)
+      x.password === loginData.password && x.role === loginData.role && x.datum === loginData.datum && x.pol === loginData.pol)
     this.loggedUser = user;
 
     if (user) {
@@ -33,7 +34,6 @@ export class UserService {
 
   register(loginData: LoginDto, isAdmin?: boolean): void {
 
-    //    this.regusersDb.push({ email: regData.email, password: regData.password, name: regData.name })
     this.usersDb.push({
       ...loginData,
       role: isAdmin ? Role.Admin : Role.User,
@@ -50,5 +50,14 @@ export class UserService {
   logout(): void {
     this.loggedUser = undefined;
     localStorage.clear();
+  }
+
+
+  showUser(loginData: LoginDto) {
+    this.usersDb.find(x => {
+      x.email === loginData.email &&
+        x.password === loginData.password && x.role === loginData.role
+    })
+
   }
 }

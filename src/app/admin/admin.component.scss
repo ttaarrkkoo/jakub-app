@@ -1,0 +1,8 @@
+    .card1 {
+        border: 1px solid black;
+        margin: 1px;
+        padding: 10px 3px;
+        /*setting width for each and every card element as well as -10px for removing the margin width for 5 elements*/
+        justify-items: center;
+        display: flex;
+}

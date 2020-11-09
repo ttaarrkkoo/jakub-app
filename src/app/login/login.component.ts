@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LoginDto } from '../types';
+import { LoginDto, Pol, Role } from '../types';
 import { UserService } from '../services/user.service'
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { sha256 } from 'src/hash';
 
 @Component({
   selector: 'app-login',
@@ -11,51 +13,59 @@ import { Router } from '@angular/router';
 
 
 export class LoginComponent implements OnInit {
-@Input() isAdmin = false;
+  @Input() isAdmin = false;
 
-loginData = {name: '', email: '', password: ''} as LoginDto;
- isRegister = false;
+  musko: Pol.Musko;
+  zensko: Pol.Zensko;
+  admin: Role.Admin;
+  user: Role.User;
 
-constructor(private userService: UserService, private router: Router) { }
+
+  loginData = { name: '', email: '', password: '', datum: '', pol: {}, role: {} } as LoginDto;
+  isRegister = false;
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onLogin() {
-// console.log(this.loginData.email);
- //   console.log(this.loginData.password)
-this.userService.login(this.loginData).subscribe(user => {
-  if (user) {
-   this.router.navigate(['home']);
-  }
-  else {
-    alert('Pogresni podaci');
-  }
-})
-}
+  async onLogin(): Promise<void> {
+    console.log(this.loginData);
+    this.loginData.password = await sha256(this.loginData.password)
 
-register(): void {
-if (this.isRegister || this.isAdmin) {
-  this.userService.register(this.loginData);
-  this.isRegister = false;
-} else {
-  this.isRegister = true;
-}
-}
 
-get getTitle(): string {
-  if (this.isRegister || this.isAdmin) {
-  return 'Register Form';
+    this.userService.login(this.loginData).subscribe(user => {
+      if (user) {
+        this.router.navigate(['home']);
+      }
+      else {
+        alert('Pogresni podaci');
+      }
+    })
   }
-  return 'Login Form';
-}
 
-get getRegisterLabel(): string {
-  if (this.isRegister || this.isAdmin) {
-    return 'Register';
+  async register(): Promise<void> {
+    this.loginData.password = await sha256(this.loginData.password)
+    if (this.isRegister || this.isAdmin) {
+      this.userService.register(this.loginData, this.isAdmin);
+      this.isRegister = false;
+    } else {
+      this.isRegister = true;
+    }
   }
-  else return 'Create account';
-}
 
+  get getTitle(): string {
+    if (this.isRegister || this.isAdmin) {
+      return 'Register Form';
+    }
+    return 'Login Form';
+  }
+
+  get getRegisterLabel(): string {
+    if (this.isRegister || this.isAdmin) {
+      return 'Register';
+    }
+    else return 'Create account';
+  }
 
 }
